@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Menu } from 'lucide-react'
+import { useActiveSection } from './SmoothScrollProvider'
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
+  const { activeId } = useActiveSection()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -10,6 +12,9 @@ export default function Header() {
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  const linkBase = 'hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 rounded-sm'
+  const isActive = (id) => activeId === id
 
   return (
     <header className={`fixed top-0 inset-x-0 z-30 transition-all ${scrolled ? 'backdrop-blur supports-[backdrop-filter]:bg-black/40' : 'bg-transparent'}`}>
@@ -20,9 +25,10 @@ export default function Header() {
             <span className="font-semibold text-white">aidevelo.ai</span>
           </a>
           <nav className="hidden md:flex items-center gap-6 text-white/80">
-            <a href="#services" className="hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 rounded-sm">Services</a>
-            <a href="#showcase" className="hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 rounded-sm">Showcase</a>
-            <a href="#contact" className="hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 rounded-sm">Contact</a>
+            <a href="#services" className={`${linkBase} ${isActive('services') ? 'text-white' : ''}`}>Services</a>
+            <a href="#showcase" className={`${linkBase} ${isActive('showcase') ? 'text-white' : ''}`}>Showcase</a>
+            <a href="#case-studies" className={`${linkBase} ${isActive('case-studies') ? 'text-white' : ''}`}>Case Studies</a>
+            <a href="#contact" className={`${linkBase} ${isActive('contact') ? 'text-white' : ''}`}>Contact</a>
           </nav>
           <button className="md:hidden text-white/80" aria-label="Open menu">
             <Menu />

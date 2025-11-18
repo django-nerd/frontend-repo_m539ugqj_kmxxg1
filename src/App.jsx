@@ -5,6 +5,7 @@ import Showcase from './components/Showcase'
 import CTA from './components/CTA'
 import Header from './components/Header'
 import BackgroundFX from './components/BackgroundFX'
+import CaseStudies from './components/CaseStudies'
 
 function App() {
   return (
@@ -13,10 +14,11 @@ function App() {
       <Header />
       <main className="relative">
         <Hero />
-        <div id="showcase">
+        <div id="showcase" className="scroll-mt-28">
           <Showcase />
         </div>
         <Services />
+        <CaseStudies />
         <CTA />
         <footer className="py-10 text-center text-white/60">
           © {new Date().getFullYear()} aidevelo.ai — AI development company
