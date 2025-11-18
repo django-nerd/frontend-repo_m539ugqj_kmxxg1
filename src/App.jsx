@@ -6,11 +6,13 @@ import CTA from './components/CTA'
 import Header from './components/Header'
 import BackgroundFX from './components/BackgroundFX'
 import CaseStudies from './components/CaseStudies'
+import ScrollEffects from './components/ScrollEffects'
 
 function App() {
   return (
     <div className="min-h-screen bg-black text-white">
       <BackgroundFX />
+      <ScrollEffects />
       <Header />
       <main className="relative">
         <Hero />
