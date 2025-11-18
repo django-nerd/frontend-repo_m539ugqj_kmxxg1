@@ -1,6 +1,7 @@
 import React from 'react'
 import Spline from '@splinetool/react-spline'
 import { motion, useReducedMotion } from 'framer-motion'
+import MagneticButton from './MagneticButton'
 
 export default function Hero() {
   const prefersReduced = useReducedMotion()
@@ -36,13 +37,12 @@ export default function Hero() {
             We craft intelligent agents, AI-powered websites, and futuristic enhancements that accelerate your business.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a href="#contact" className="group inline-flex items-center gap-2 rounded-xl bg-white/90 text-slate-900 px-5 py-3 font-semibold shadow hover:bg-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30">
-              Start a project
-              <span className="transition-transform group-hover:translate-x-0.5" aria-hidden>→</span>
-            </a>
-            <a href="#services" className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 text-white px-5 py-3 font-semibold hover:bg-white/10 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30">
+            <MagneticButton as="a" href="#contact" className="rounded-xl bg-white/90 text-slate-900 px-5 py-3 font-semibold shadow hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30">
+              Start a project <span className="ml-1" aria-hidden>→</span>
+            </MagneticButton>
+            <MagneticButton as="a" href="#services" className="rounded-xl border border-white/20 bg-white/5 text-white px-5 py-3 font-semibold hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30">
               Explore services
-            </a>
+            </MagneticButton>
           </div>
         </motion.div>
       </div>

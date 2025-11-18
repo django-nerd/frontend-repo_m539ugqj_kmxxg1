@@ -25,8 +25,8 @@ export default function BackgroundFX() {
     )
   }
 
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
+  const mouseX = useMotionValue(0.5)
+  const mouseY = useMotionValue(0.5)
 
   const smoothX = useSpring(mouseX, { stiffness: 60, damping: 20 })
   const smoothY = useSpring(mouseY, { stiffness: 60, damping: 20 })
@@ -81,8 +81,11 @@ export default function BackgroundFX() {
       <motion.div className="absolute -top-24 -left-24 w-[40vw] h-[40vw] rounded-full blur-3xl bg-fuchsia-600/20" style={{ x: translateGlow1X, y: translateGlow1Y }} />
       <motion.div className="absolute -bottom-24 -right-24 w-[35vw] h-[35vw] rounded-full blur-3xl bg-indigo-600/20" style={{ x: translateGlow2X, y: translateGlow2Y }} />
 
-      {/* Animated scanline (slower on mobile) */}
+      {/* Animated scanlines and parallax stars */}
       <motion.div className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent" initial={{ y: '110%' }} animate={{ y: ['110%', '-10%'] }} transition={{ repeat: Infinity, duration: isCoarsePointer ? 12 : 8, ease: 'linear' }} />
+      <div className="absolute inset-0">
+        <div className="pointer-events-none absolute inset-0 opacity-40" style={{ backgroundImage: 'radial-gradient(2px_2px_at_20%_30%,rgba(255,255,255,0.3),transparent), radial-gradient(1px_1px_at_60%_70%,rgba(255,255,255,0.2),transparent), radial-gradient(1.5px_1.5px_at_80%_20%,rgba(255,255,255,0.25),transparent)' }} />
+      </div>
     </div>
   )
 }

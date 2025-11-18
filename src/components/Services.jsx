@@ -1,6 +1,7 @@
 import React from 'react'
 import { Brain, Bot, Globe, Sparkles, Workflow } from 'lucide-react'
 import { motion } from 'framer-motion'
+import HoloCard from './HoloCard'
 
 const services = [
   {
@@ -41,11 +42,12 @@ export default function Services() {
         </div>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map(({ icon: Icon, title, desc }, i) => (
-            <motion.div key={title} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur hover:bg-white/10">
-              <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/10 to-indigo-500/10 opacity-0 group-hover:opacity-100 transition" />
-              <Icon className="h-8 w-8 text-white/90" />
-              <h3 className="mt-4 text-xl font-semibold text-white">{title}</h3>
-              <p className="mt-2 text-white/70">{desc}</p>
+            <motion.div key={title} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="group">
+              <HoloCard>
+                <Icon className="h-8 w-8 text-white/90" />
+                <h3 className="mt-4 text-xl font-semibold text-white">{title}</h3>
+                <p className="mt-2 text-white/70">{desc}</p>
+              </HoloCard>
             </motion.div>
           ))}
         </div>
